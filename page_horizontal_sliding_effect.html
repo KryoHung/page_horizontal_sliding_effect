@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>滚动交互效果</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      display: flex;
+      width: 500vw;
+      height: 100vh;
+      overflow-x: hidden;
+      transition: transform 1s;
+    }
+    
+    .page {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .page h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .page p {
+      font-size: 1.5rem;
+    }
+    
+    .page.page1 {
+      background-color: #FF3434; /* 页面1 */
+    }
+    
+    .page.page2 {
+      background-color: #CD40FF; /* 页面2 */
+    }
+    
+    .page.page3 {
+      background-color: #4434FF; /* 页面3 */
+    }
+    
+    .page.page4 {
+      background-color: #34AAFF; /* 页面4 */
+    }
+    
+    .page.page5 {
+      background-color: #00CC8F; /* 页面5 */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="page page1">
+      <h1>页面 1</h1>
+      <p>滚动鼠标以查看页面动画效果</p>
+    </div>
+    
+    <div class="page page2">
+      <h1>页面 2</h1>
+      <p>滚动鼠标以查看页面动画效果</p>
+    </div>
+    
+    <div class="page page3">
+      <h1>页面 3</h1>
+      <p>滚动鼠标以查看页面动画效果</p>
+    </div>
+    
+    <div class="page page4">
+      <h1>页面 4</h1>
+      <p>滚动鼠标以查看页面动画效果</p>
+    </div>
+    
+    <div class="page page5">
+      <h1>页面 5</h1>
+      <p>滚动鼠标以查看页面动画效果</p>
+    </div>
+  </div>
+  
+  <script>
+    const container = document.querySelector('.container');
+    const pages = document.querySelectorAll('.page');
+    let currentPage = 0;
+  
+    document.addEventListener('wheel', function(event) {
+      if (event.deltaY > 0) {
+        if (currentPage === pages.length - 1) return;
+        currentPage++;
+      } else {
+        if (currentPage === 0) return;
+        currentPage--;
+      }
+  
+      container.style.transform = `translateX(-${currentPage * 100}vw)`;
+    });
+  </script>
+</body>
+</html>
